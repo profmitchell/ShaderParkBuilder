@@ -1,0 +1,161 @@
+/* CSS files add styling rules to your content */
+
+/* @font-face {
+  font-family: 'Regolapro';
+  src: url('./fonts/RegolaPro-Book.woff2') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+} */
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 2em;
+  width: 100vw; 
+  height: 100vh; 
+  margin : 0px; 
+  padding : 0px; 
+  border : 0px; 
+  background-color : black;
+}
+
+.code-container {
+  position: fixed;
+  left: 0px;
+  top: 30px;
+  width: 50vw;
+  height: calc(100vh - 30px);
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 800px) {
+  .code-container {
+    width: 100vw;
+  }
+}
+
+
+/*
+
+POTENTIALLY REDUNDANT
+
+
+canvas {
+  width: 100%;
+  height: 100%;
+  margin : 0px;
+  padding : 0px;
+  border : 0px;
+  z-index: -1;
+  background-color : transparent;
+} */
+
+.editor-action-buttons {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.logo {
+  position: fixed;
+  right: 15px;
+  bottom: 10px;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+.editor-button {
+  padding: 5px 15px 5px 15px;
+  border-radius: 50px;
+  /* border: 1px solid lightgrey; */
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15); */
+  margin-top: 2.5px;
+  transition: all 300ms ease-in-out ;
+  color: rgb(165, 165, 165);
+  border-color: rgb(165, 165, 165);
+  background-color: transparent;
+  -webkit-transition: all 300ms ease-in-out;
+  cursor: pointer;
+}
+.editor-button:hover {
+    color: white;
+    border-color: white;
+    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2); */
+}
+
+.cm-scroller {
+  overflow: auto !important;
+}
+.cm-scroller::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust as needed */
+  border: 3px solid transparent; /* This will increase the size of the thumb, effectively hiding the intersection */
+  background-clip: content-box; /* Ensures the background color doesn't bleed beyond the border */
+  border-radius: 5px; /* Optional: For rounded corners */
+}
+
+.cm-scroller::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px;
+}
+
+.cm-scroller:focus {
+  outline: none !important
+}
+
+.cm-editor {
+  outline: none !important
+}
+
+/* Remove or comment out these styles as they're for the old preview */
+/*.preview-container {
+    position: fixed;
+    right: 0px;
+    top: 30px;
+    width: 50vw;
+    height: calc(100vh - 30px);
+    background-color: transparent;
+}
+*/
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: transparent;
+}
+
+/* Keep the panel resize styles */
+[data-panel-resize-handle-id] {
+  background-color: transparent;
+  transition: background-color 150ms;
+}
+
+[data-panel-resize-handle-id]:hover {
+  background-color: rgb(209 213 219);
+}
+
+[data-panel-group-direction="horizontal"] > [data-panel-resize-handle-id] {
+  width: 2px;
+  margin: 0 -1px;
+  cursor: col-resize;
+}
+
+[data-panel-group-direction="vertical"] > [data-panel-resize-handle-id] {
+  height: 2px;
+  margin: -1px 0;
+  cursor: row-resize;
+}
+
+/* Add base theme styles */
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #1a202c;
+  /* Add other light theme variables */
+}
+
+/* Dark theme overrides */
+.dark {
+  --bg-primary: #1a202c;
+  --text-primary: #ffffff;
+  /* Add other dark theme variables */
+}
