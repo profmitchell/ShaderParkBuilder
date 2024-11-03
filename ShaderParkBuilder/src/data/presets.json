@@ -1,0 +1,357 @@
+{
+    "version": "1.0",
+    "presets": [
+      {
+        "id": "noise-based-displacement",
+        "title": "Noise-Based Displacement",
+        "description": "Adds noise-based randomness to create textures, distortions, or organic forms like clouds and waves.",
+        "tags": ["noise", "displacement", "organic", "textures", "animation"],
+        "code": "let scale = 3.0; // Adjust for more or less detail\nlet s = getSpace();\nlet displacement = noise(s * scale + time * 0.1);\n\n// Apply the noise to distort a sphere\ndisplace(displacement * 0.1, 0, 0);\nsphere(0.5);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "color-cycling-sin-cos",
+        "title": "Color Cycling with Sin and Cos",
+        "description": "Animates color over time using sine and cosine functions to create a pulsing, dynamic color effect.",
+        "tags": ["color", "animation", "sin", "cos", "pulsing"],
+        "code": "let cycleSpeed = 2.0; // Speed of color cycling\ncolor(vec3(sin(time * cycleSpeed) * 0.5 + 0.5, cos(time * cycleSpeed) * 0.5 + 0.5, 0.8));\nsphere(0.5);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "rotational-patterns-repetition",
+        "title": "Rotational Patterns with Repetition",
+        "description": "Creates radial symmetry by repeating objects around a center point, ideal for mandala-like or floral patterns.",
+        "tags": ["rotational", "patterns", "symmetry", "repetition", "mandala"],
+        "code": "let count = 10; // Number of repeats\nlet radius = 1.0; // Distance from center\n\nfor (let i = 0; i < count; i++) {\n    let angle = i * TWO_PI / count;\n    displace(cos(angle) * radius, sin(angle) * radius, 0);\n    sphere(0.1);\n    reset();\n}",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "dynamic-size-noise",
+        "title": "Dynamic Size with Noise",
+        "description": "Applies noise to the size of objects to create a pulsating or breathing effect.",
+        "tags": ["noise", "dynamic", "size", "pulsating", "animation"],
+        "code": "let s = getSpace();\nlet n = noise(s * 5.0 + time * 0.3);\nlet size = 0.5 + n * 0.2; // Varies size based on noise\n\nsphere(size);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "blend-between-shapes-mixgeo",
+        "title": "Blend Between Shapes with mixGeo",
+        "description": "Blends two shapes smoothly using the mixGeo function, enabling transitions from one form to another.",
+        "tags": ["blend", "mixGeo", "shapes", "morphing", "transitions"],
+        "code": "let blendFactor = sin(time) * 0.5 + 0.5; // Oscillates from 0 to 1\nmixGeo(blendFactor);\n\n// Shape A\nsphere(0.3);\n\n// Shape B\nreset();\ntorus(0.5, 0.1);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "simple-pattern-grids",
+        "title": "Simple Pattern with Grids",
+        "description": "Creates a grid of shapes, laying the foundation for various effects by layering transformations.",
+        "tags": ["grid", "patterns", "layering", "transformation", "animation"],
+        "code": "let gridSize = 5;\nlet spacing = 0.5;\n\nfor (let x = -gridSize; x < gridSize; x++) {\n    for (let y = -gridSize; y < gridSize; y++) {\n        displace(x * spacing, y * spacing, 0);\n        sphere(0.1);\n        reset();\n    }\n}",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "twisting-rotate-sin",
+        "title": "Twisting with rotate and sin",
+        "description": "Adds a time-based twist to objects, creating dynamic swirling or spiraling effects.",
+        "tags": ["twist", "rotate", "sin", "spiral", "dynamic"],
+        "code": "let twistAmount = sin(time) * PI / 4; // Changes over time\nrotateY(twistAmount);\nrotateX(twistAmount * 0.5);\nbox(vec3(0.5));",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "mirror-effects-symmetry",
+        "title": "Mirror Effects for Symmetry",
+        "description": "Mirrors objects along an axis to create symmetrical patterns, enhancing visual balance.",
+        "tags": ["mirror", "symmetry", "effects", "patterns", "reflection"],
+        "code": "let mirrorSpacing = 0.5;\nmirrorX();\ndisplace(mirrorSpacing, 0, 0);\nsphere(0.3);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "layering-shapes-blend-transparency",
+        "title": "Layering Shapes with blend() for Transparency",
+        "description": "Uses blend() to overlay transparent shapes, adding depth and dimension to the scene.",
+        "tags": ["layering", "blend", "transparency", "depth", "shadows"],
+        "code": "let transparency = 0.5;\nblend(transparency);\n\n// Draw overlapping shapes\nsphere(0.3);\ndisplace(0.5, 0.5, 0);\nsphere(0.3);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "spotted-torus-slider-controls",
+        "title": "Spotted Torus with Slider Controls",
+        "description": "Creates a torus with adjustable parameters via sliders, allowing interactive customization.",
+        "tags": ["torus", "sliders", "interactive", "controls", "animation"],
+        "code": "// Set the maximum number of reflections for rendering\nsetMaxReflections(2);\n\n// Create input sliders for adjustable parameters\nlet noiseScale = input(0.1, 0.01, 0.5);\nlet sphereSize = input(0.2, 0.1, .5);\nlet torusRadius = input(0.5, 0.3, 1.0);\nlet torusThickness = input(0.2, 0.1, 0.5);\nlet twistFactor = input(10, 1, 20);\n\n// Generate noise for the sphere\nlet n = vectorContourNoise(\n  noiseScale * getSpace() + vec3(0, 0, 3.5 + .2 * sin(.1 * time)),\n  .1,\n  2\n);\n\n// Set the color based on the noise\ncolor(n = pow(.5 * sin(2 * n) + .5, vec3(4)));\nreflectiveColor(n + .1);\nmetal(3);\nocclusion(-10);\n\n// Create a mirrored effect\nmirrorN(5, .04);\n\n// Create a sphere with size based on noise\nsphere(.02 + sphereSize * n.x);\nreset();\n\nintersect();\n\n// Calculate twist based on ray direction and time\nlet twist = twistFactor * getRayDirection().x * sin(.1 * time);\n\n// Create a torus\nrotateX(PI / 2 + twist);\ntorus(torusRadius, torusThickness);\nblend(.15);\nreset();\n\n// Create a box shape with twist\nshape(() => {\n  rotateX(twist);\n  box(vec3(4.2));\n  shell(.01);\n});\n\n// Add a base\ndisplace(0, -.8, 0);\nbox(0.5, .15, .4);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "cell-shader",
+        "title": "Cell Shader",
+        "description": "Creates a cell-like shading effect with adjustable glow and ambient parameters.",
+        "tags": ["cell shading", "shader", "ambient", "glow", "noLighting"],
+        "code": "noLighting();\nlet ang = 1.0 - dot(-1.0 * getRayDirection(), normal);\nlet glow = input(1.33, -2.0, 2.0);\nlet ambient = input(-2.0, -2.0, 2.0);\nlet c = ambient + glow * ang;\ncolor(vec3(c));\ntorus(0.5, 0.2);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "noise-animated-sphere-waves",
+        "title": "Noise Animated Sphere Waves",
+        "description": "Animates a sphere's size with noise to create wave-like distortions.",
+        "tags": ["noise", "animation", "sphere", "waves", "distortion"],
+        "code": "let scale = 2.0;\nlet s = getSpace();\nlet n = 0.1 * noise(scale * s + time);\nsphere(0.7 + n);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "infinite-field-of-bulbs",
+        "title": "Infinite Field of Bulbs",
+        "description": "Creates an infinite grid of spheres with pulsating inner spheres, simulating an endless field of bulbs.",
+        "tags": ["infinite", "grid", "spheres", "bulbs", "animation"],
+        "code": "// Technique: Time-Based Animation Control\nlet duration = time / 20 * TWO_PI;\nlet oscillation = abs(sin(duration));\n\n// Technique: Dynamic Color\nlet col = sin(duration * 3);\ncolor(vec3(0.1, 0.5, 0.5 + col * 0.4));\n\n// Technique: Layout Grid of Spheres\nlet layoutGrid = (reps, spacerSize, draw) => {\n  for (let i = 0; i < reps; i++) {\n    repeat(vec3(spacerSize * i, spacerSize * i, spacerSize * i), vec3(reps, reps, reps));\n    draw(i / reps);\n  }\n};\n\n// Render grid of small spheres\nlayoutGrid(4, 0.3, () => sphere(0.1 * oscillation));\n\n// Technique: Inner Pulsating Sphere\nreset();\nsphere(0.5 + oscillation * 0.2);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "glitch-cube",
+        "title": "Glitch Cube",
+        "description": "Creates a cube with glitch effects that look cool from different angles, utilizing noise for metallic and shiny effects.",
+        "tags": ["glitch", "cube", "noise", "metallic", "shiny"],
+        "code": "setMaxIterations(500);\n\nsetStepSize(0.01);\nrotateY(-0.1 * time);\nlet n = noise(getSpace() * 40 + time + 10000000);\ncolor(vec3(0, 0, 0.5) + normal * 0.2);\nmetal(n * 10);\nshine(n * 2 * sin(time));\nsphere(0.5);\nmixGeo(0.1);\nbox(0.2, 0.2, 0.2);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "space-coffee",
+        "title": "Space Coffee",
+        "description": "Creates a complex, animated 3D scene with exploded torus, moving spheres, and a background grid, all rotating smoothly.",
+        "tags": ["space", "coffee", "animated", "3D", "torus", "spheres"],
+        "code": "// Calculate a cyclic duration based on time\let duration = time / 30 * TWO_PI;\n\n// Create a clamped oscillation effect between 0 and 0.5\nlet oscillation = clamp((abs(sin(duration)) - 0.8 ) * 2, 0.0, 0.5);\n\n// Calculate color based on the distance from the center\nlet col = pow(sin(10 * length(getSpace())), 2);\n\n// Create a color offset based on the normal direction\nlet normalOffset =  1 - vec3(normal.x, normal.y, normal.z + 2);\n\n// Set the color using a combination of calculated color and normal offset\ncolor(vec3(0, col, col) + normalOffset);\n\n// Define an exploded torus shape\nlet explodedTorus = shape(() =>{\n  rotateX(PI / 2);\n  mirrorXYZ();\n  displace(0.09 * abs(sin(duration * 4)) - 0.01);\n  torus(0.2, 0.1);\n  shell(0.01);\n  displace(0.2, 0.2, 0.2);\n  intersect();\n  box(0.2, 0.2, 0.2);\n});\n\n// Define inner spheres that orbit around the center\nlet innerSpheres = shape((count) => {\n  for(let i = 0; i < count; i++) {\n    displace(cos(duration * 20 + i) * 0.25, sin(duration * 20 + i) * 0.25, 0);\n    sphere(0.04);\n    reset();\n  }\n});\n\n// Function to create a grid layout\nlet layoutGrid = (reps, spacerSize, draw) => {\n  for(let i = 0; i < reps; i++) {\n    repeat(vec3(spacerSize * i, spacerSize * i , spacerSize * i), vec3(reps, reps, reps));\n    draw(i / reps);\n  }\n};\n\n// Set blending for smooth transitions\nblend(0.1);\n\n// Create a background grid of small spheres\nlayoutGrid(3, 0.05, () => sphere(0.01));\nreset();\n\n// Rotate the entire scene\nrotateY(duration * -4);\n\n// Mix between different geometries based on oscillation\nmixGeo(oscillation);\n\n// Create the main shape combining exploded torus, a moving sphere, and inner spheres\nshape(()=> {\n  explodedTorus();\n  displace(cos(duration * 4 + PI / 2) * 0.5, 0, sin(duration * 8 + PI) * 0.5);\n  sphere(0.1);\n  reset();\n  innerSpheres(4);\n})();",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "rotating-tori",
+        "title": "Rotating Tori",
+        "description": "Creates a dynamic scene with multiple rotating tori of increasing size, combined with a hollowed-out box.",
+        "tags": ["rotating", "tori", "dynamic", "box", "difference"],
+        "code": "// Rotate the entire scene around the X, Y, and Z axes based on time\nrotateX(time * 0.5);\nrotateY(time * 0.5);\nrotateZ(time * 0.5);\n\n// Draw a torus with a major radius of 0.5 and a minor radius of 0.05\ntorus(0.5, 0.05);\n\n// Apply additional rotations to the scene\nrotateX(time * 0.03);\nrotateY(time * 0.5);\nrotateZ(time * 0.03);\n\n// Draw another torus with a larger major radius of 0.75 and the same minor radius\ntorus(0.75, 0.05);\n\n// Apply further rotations to the scene\nrotateX(time * 0.05);\nrotateY(time * 0.4);\nrotateZ(time * 0.03);\n\n// Draw a third torus with an even larger major radius of 1 and the same minor radius\ntorus(1, 0.05);\n\n// Reset any displacement transformations\ndisplace(0, 0, 0);\n\n// Draw a box with dimensions 0.2 x 0.2 x 0.2\nbox(vec3(0.2));\n\n// Set the operation to difference, which will subtract the next shape from the current shape\ndifference();\n\n// Draw a sphere with a radius of 0.25, which will be subtracted from the box\nsphere(0.25);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "ring-of-warble",
+        "title": "Ring of Warble",
+        "description": "Creates a dynamic ring with adjustable parameters, incorporating noise and rotation for a warbling effect.",
+        "tags": ["ring", "warble", "noise", "rotation", "animation"],
+        "code": "// Define input parameters with default values and ranges\nlet scale = input(2.0, 2.0, 5.0);\nlet a = input(0, 0, 3.0);\nlet b = input(0, 0, 5.0);\nlet e = input(0, 0, 5.0);\nlet f = input(0, 0.0, 5.0);\nlet g = input(1.0, 1.0, 1.5);\nlet h = input(1.2, 1.2, 2.5);\n\nlet red = input(0.5, 0.5, 3.5);\nlet green = input(0.5, 0.5, 2.3);\nlet blue = input(0.5, 0.5, 5.5);\n\n// Define the wings shape\nlet wings = shape(() => {\n  // Get the current 3D space coordinates\n  let s = getSpace();\n  \n  // Get the current ray direction\n  let r = getRayDirection();\n  \n  // Generate noise based on space coordinates, scale, and time\n  let n = noise(s * scale + vec3(2.0, 5.9, time * 0.1) + noise(s * scale + vec3(0, r.x + 9.0, time * b)));\n  \n  // Set the step size for raymarching\n  setStepSize(0.2);\n\n  // Rotate around the X-axis based on time and input parameters\n  rotateX(PI / 2 + sin(r.x * sin(a + time)) + a * r.x);\n  \n  // Set the color with a combination of noise, input colors, and fresnel effect\n  color(vec3(n) + vec3(red, green + r.x, blue) * 0.1 * r.y + fresnel(h + r.x));\n  \n  // Draw a box with dynamic size based on time and input parameter\n  box(vec3(f + time, f + time, 0.2));\n  \n  // Apply a mirror effect along the normal vector\n  mirrorN(g, 0.3);\n  \n  // Blend between geometries\n  mixGeo(0.2);\n  \n  // Rotate around the Z-axis based on ray direction and input parameter\n  rotateZ(r.x * e);\n  \n  // Set the shine/glossiness of the material based on noise\n  shine(noise(s * 5) * 0.8 + 0.2);\n  \n  // Draw a torus with dynamic size based on noise\n  torus(0.4 + 0.1 * n, 0.1);\n});\n\n// Execute the wings shape function\nwings();",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "colorful-box",
+        "title": "Colorful Box",
+        "description": "Creates a dynamic, striped box with noise-based color variations and an oscillating sphere.",
+        "tags": ["colorful", "box", "noise", "animation", "stripes"],
+        "code": "setStepSize(0.2);\nsetMaxIterations(4);\n\n// Get the current 3D space coordinates\nlet s = getSpace();\n\n// Rotate the entire scene around the X-axis by 90 degrees (PI/2 radians)\nrotateX(PI / 2);\n\n// Generate a small noise value based on the ray direction\nlet n = 0.004 * noise(10 * getRayDirection());\n\n// Convert the space coordinates to spherical coordinates\nlet rtp = getSpherical(s);\n\n// Create vertical lines effect using sine function and noise\nlet verticalLines = sin(n * 50 * s.x + rtp.y * 100 + time);\n\n// Dampen the effect towards the ends using sine function\nlet endsDampen = sin(rtp.y) * 0.3;\n\n// Generate another noise value based on ray direction, vertical lines, and time\nlet n2 = noise(getRayDirection() + verticalLines * pow(endsDampen, 0.9) + vec3(0, time * 0.1, 0));\n\n// Set ambient occlusion for shading\nocclusion(0.1);\n\n// Set the color using a combination of noise, space coordinates, and a power function\ncolor(pow(vec3(n2) + s * 0.5 + 0.5, vec3(1)));\n\n// Draw a box with dimensions 0.8 x 0.8 x 0.8\nbox(vec3(0.8));\n\n// Expand the box based on the second noise value\nexpand(n2 * 0.2);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "colorful-cubes",
+        "title": "Colorful Cubes",
+        "description": "Generates multiple rotating cubes with metallic and shiny effects, layered with transparency for depth.",
+        "tags": ["cubes", "colorful", "metallic", "shiny", "rotating", "transparency"],
+        "code": "setMaxReflections(0);\nsetMaxIterations(20);\nocclusion(0.3);\nshine(0.5);\nmetal(0.5);\n\n// Define the base color\nlet col = vec3(0.9, 0.2, 0.1);\n\n// Set the color using a combination of the normal vector and the base color\ncolor(normal * 0.35 + col);\n\n// Apply a mirror effect along the normal vector\nmirrorN(2, 0.19);\n\n// Rotate the entire scene over time around the X, Y, and Z axes\nrotateX(time * 0.3);\nrotateY(time * 0.2);\nrotateZ(time * 0.1);\n\n// Apply a mirror effect along the X, Y, and Z axes\nmirrorXYZ();\n\n// Draw the first sphere with a radius of 0.11\nsphere(0.11);\n\n// Set blending for smooth transitions\nblend(0.08);\n\n// Displace the position and draw a smaller sphere\ndisplace(0.03, 0.02 * (sin(time) * 0.5), 0.03);\nsphere(0.06);\n\n// Further displace the position and draw an even smaller sphere\ndisplace(0.05, 0.08 * (sin(time)), 0.05);\nsphere(0.02);\n\n// Displace the position again and draw another small sphere\ndisplace(0.04, 0.04 * (sin(time)), 0.04);\nsphere(0.02);\n\n// Displace the position once more and draw a slightly larger sphere\ndisplace(0.04, 0.04 * (sin(time)), 0.04);\nsphere(0.065);\n\n// Reset any transformations\nreset();\n\n// Expand the geometry slightly\nexpand(0.0);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "circling-circles",
+        "title": "Circling Circles",
+        "description": "Creates multiple tori that rotate around the X and Z axes, forming circling circles with varying minor radii.",
+        "tags": ["circling", "circles", "tori", "rotation", "dynamic"],
+        "code": "for (let i = 0; i < 10; i++) {\n  // Rotate the scene around the X-axis based on the sine of time and the loop index\n  rotateX(sin(time) * i / 10);\n  \n  // Rotate the scene around the Z-axis based on time\n  rotateZ(time / 10);\n  \n  // Draw a torus with a major radius of 0.8 and a minor radius that changes with the loop index\n  torus(0.8, i / 1000);\n}",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "fully-inside-colors-cray",
+        "title": "Fully Inside Colors Goin Cray",
+        "description": "Creates an animated box with colorful internal distortions and metallic properties, giving a crazy inside view.",
+        "tags": ["colors", "animation", "box", "metallic", "crazy"],
+        "code": "let s = getRayDirection();\nlet r = getSpace();\n\n// Set the step size for raymarching\nsetStepSize(0.1);\n\n// Set the maximum number of iterations for raymarching\nsetMaxIterations(50);\n\n// Set the color based on the negative ray direction, scaled by 0.2\ncolor(-s * 0.2);\n\n// Set the metallic property of the material\nmetal(0.9);\n\n// Rotate the scene around the X-axis based on the Y-coordinate of the space and time\nrotateX(r.y * 5 + time / 2);\n\n// Displace the position to ensure the camera starts inside the box and slightly further inside\ndisplace(0.1, 0.4, -0.9);\n\n// Further displace the position based on sine and cosine functions of the ray direction and time\ndisplace(sin(s.y * 20 + time) * 0.1, sin(s.x * 10 + time) * 0.2, cos(s.x * 20) * 0.2);\n\n// Draw a box with dimensions 1 x 0.5 x 0.5\nbox(1, 0.5, 0.5);\n\n// Expand the geometry slightly\nexpand(0.3);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "crazy-loading-shape-transition",
+        "title": "Crazy Loading Shape Transition",
+        "description": "Creates a transitioning 3D shape animation with rotating tori and morphing geometries.",
+        "tags": ["loading", "transition", "3D", "shapes", "animation"],
+        "code": "let ourShape = shape((size) => {\n  // Get the current ray direction\n  let r = getRayDirection();\n\n  // Define a base color (black in this case)\n  let col = vec3(0, 0, 0);\n\n  // Set the color using a combination of the normal vector and the base color\n  color(normal * 0.1 + col);\n\n  // Rotate the scene around the Y-axis based on the X-component of the ray direction and time\n  rotateY(r.x + time);\n\n  // Rotate the scene around the X-axis based on the X-component of the ray direction and time\n  rotateX(r.x * 0.05 + time);\n\n  // Apply a mirror effect along the normal vector\n  mirrorN(3, 0.03);\n\n  // Draw a very small sphere\n  sphere(0.0001);\n\n  // Reset transformations\n  reset();\n\n  // Set blending for smooth transitions, scaled by time\n  blend(0.05 * (time * 0.002));\n\n  // Rotate the scene around the Y-axis based on the Y-component of the ray direction and time\n  rotateY(r.y + time);\n\n  // Rotate the scene around the X-axis based on the X-component of the ray direction and time\n  rotateX(r.x * 0.05 + time);\n\n  // Draw a torus with the given size and a minor radius of 0.01\n  torus(size, 0.01);\n});\n\n// Set the shine/glossiness of the material\nshine(1);\n\n// Set the metallic property of the material, decreasing over time\nmetal(2 - (time * 0.005));\n\n// Create the shape with a size of 0.4\nourShape(0.4);\n\n// Blend between geometries based on a sine function of time\nmixGeo(nsin(time));\n\n// Blend between materials based on a sine function of time\nmixMat(nsin(time));\n\n// Set the color to a light blue\ncolor(0.5, 0.5, 0.905);\n\n// Draw a sphere with a radius of 0.3\nsphere(0.3);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "weird-green-donut",
+        "title": "Weird Green Donut",
+        "description": "Creates a torus with a greenish hue that changes based on the angle and time, giving a dynamic appearance from different angles.",
+        "tags": ["donut", "torus", "green", "dynamic", "animation"],
+        "code": "rotateY(time * 0.5);\nrotateX(time * 0.3);\nlet ang = dot(getRayDirection(), normal);\ncolor(vec3(0.01, (0.02 * time), 0.24) * ang);\ntorus(0.5, 0.2);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "crazy-shapes-torus-controls",
+        "title": "Crazy Shapes from Torus with Controls",
+        "description": "Generates twisted, torus-like shapes with adjustable parameters, allowing interactive control over the number of twists, radius, and other factors.",
+        "tags": ["torus", "twist", "controls", "interactive", "animation"],
+        "code": "// Input parameters with default values and ranges\nlet loopCount = input(5.0, 1, 10.0);    // Controls the number of twists\nlet radius = input(0.3, 0.01, 0.5);      // Sets the base radius of the shape\nlet amplitude = input(0.1, 0.00, 0.3);   // Determines the intensity of the twirl\nlet thickness = input(0.1, 0.001, 0.3);  // Defines the thickness of the shape\n\n// Set the step size for raymarching\nsetStepSize(0.8);\n\n// Define the Signed Distance Function (SDF) for the twirl shape\nfunction twirl(pn) {\n    // Calculate the distance from the center in the xy plane\n    let r = length(vec2(pn.x, pn.y));\n    \n    // Adjust the radius\n    let r2 = r - radius;\n    \n    // Calculate the angle in the xy plane\n    let th = atan(pn.x, pn.y);\n    \n    // Apply the twirl effect to the radius\n    let r3 = r2 + amplitude * sin(loopCount * th);\n    \n    // Get the z-coordinate\n    let v = pn.z;\n    \n    // Apply the twirl effect to the z-coordinate\n    let v2 = v + amplitude * cos(loopCount * th);\n    \n    // Calculate the final distance\n    let d = sqrt(v2 * v2 + r3 * r3) - thickness;\n    \n    // Scale the distance (affects the size of the shape)\n    return d * 0.1;\n}\n\n// Get the current position in 3D space\nlet p = getSpace();\n\n// Calculate the radial distance from the center\nlet rad = length(p);\n\n// Set the color based on the radial distance\ncolor(1 - rad * 2, 2 * rad, 1);\n\n// Calculate the signed distance using the twirl function\nlet ds = twirl(p);\n\n// Set the Signed Distance Function for rendering\nsetSDF(ds);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "worley-noise-2d-3d-visualization",
+        "title": "Worley Noise 2D + 3D Visualization",
+        "description": "Combines Worley noise with 3D visualization techniques to create dynamic, noise-based box shapes with metallic and shiny properties.",
+        "tags": ["Worley noise", "2D", "3D", "visualization", "metallic", "shiny"],
+        "code": "// Input parameters\nlet scale = input(0.19);    // Controls the overall scale of the effect\nlet speed = input(0.08);    // Determines the speed of animation\nlet strength = input(0.6);  // Not used in this code snippet\nlet wStrength = input(0.14); // Controls the strength of the Worley noise effect\n\n// Set the step size for raymarching\nsetStepSize(0.4);\n\n// Get the current position in 3D space\nlet s = getSpace();\n\n// Generate noise based on position and time\nlet n = noise(s + speed + 100) * scale;\n\n// Set blending mode\nblend(0.1);\n\n// Initialize maximum distance\nlet maxDist = 1;\n\n// Generate Worley noise\nfor(let i = 1; i < 8; i++) {\n    let pos = vec3(0);\n    // Create animated position for each iteration\n    pos.x += cos(speed * time * i) * scale;\n    pos.y += sin(speed * time * i * 2) * scale * 2;\n    pos.z += cos(speed * time * i * 3) * scale;\n    // Calculate distance to this position\n    let d = distance(s, pos);\n    // Update maximum distance\n    maxDist = min(d, maxDist);\n}\n\n// Reset any previous operations\nreset();\n\n// Calculate Worley noise value\nlet worley = abs(wStrength - maxDist);\n\n// Calculate color based on Worley noise\nlet col = 1 - pow(sin(worley * 2), 0.4);\n\n// Set color (blue-green gradient based on Worley noise)\ncolor(vec3(0, 1, 5) * col);\n\n// Create a box with dimensions based on Worley noise\nbox(worley, worley, worley);\n\n// Start a union operation (for combining shapes)\nunion();\n\n// Add shine effect\nshine(0.2);\n\n// Add metallic effect\nmetal(2);\n\n// Reset transformations\nreset();\n\n// Displace the subsequent shape downwards\ndisplace(0, -0.9, 0);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "portal",
+        "title": "Portal",
+        "description": "Creates an animated, textured sphere with a pulsating effect, simulating a portal with dynamic color and shape changes.",
+        "tags": ["portal", "animated", "sphere", "pulsating", "texture"],
+        "code": "// Calculate a duration based on time, scaled and converted to radians\nlet duration = time / 30 * TWO_PI;\n\n// Set the step size for raymarching\nsetStepSize(0.79);\n\n// Rotate the entire scene around the Z-axis based on the duration\nrotateZ(duration * 2);\n// Rotate the scene 90 degrees around the Y-axis\nrotateY(PI / 2);\n\n// Add ambient occlusion effect with strength 3\nocclusion(3);\n// Remove metallic effect\nmetal(0);\n// Remove shine effect\nshine(0);\n\n// Get the current position in 3D space\nlet s = getSpace();\n\n// Generate a spherical distribution of points\nlet distro = sphericalDistribution(s, 1000);\n\n// Calculate a tiling effect based on the dot product of the distribution and position\nlet tile = dot(vec3(distro.x, distro.y, distro.z), s);\n\n// Calculate a scale factor based on the length of the distribution vector\nlet scale = length(distro.x, distro.y, distro.z);\n\n// Get the direction of the ray for the current pixel\nlet rayDir = getRayDirection();\n\n// Calculate the color based on scale, tile, and ray direction\nlet col = (scale + (1 - tile) * 0.7 + rayDir);\n// Apply the calculated color\ncolor(col);\n\n// Create a sphere with radius 0.5\nsphere(0.5);\n\n// Calculate an oscillation value that varies over time\nlet oscillation = clamp(abs(sin(duration)) - 0.1, 0.0, 1.0);\n\n// Expand (or contract) the sphere based on the scale and oscillation\n// Negative expansion creates a contraction effect\nexpand(-1 * scale * oscillation);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "wave-smoke",
+        "title": "Wave Smoke",
+        "description": "Generates a complex, animated smoke-like effect with wave distortions and dynamic shading.",
+        "tags": ["wave", "smoke", "animation", "distortion", "shading"],
+        "code": "// Set the maximum number of iterations for raymarching\nsetMaxIterations(50);\n\n// Function to map a slider value to a range, reversing the calculation using (1 - sliderValue)\nfunction mapSliderToMinMax(sliderValue, value0, value1) {\n  const range = value0 - value1;\n  const mappedValue = value0 - (1 - sliderValue) * range;\n  return mappedValue;\n}\n\n// Function to map masterNormalized value to degree and relative values\nfunction mapValues(masterNormalized) {\n  const degreeRange1 = 3.2 - 1.8;\n  const relationRange2 = 0.8 - 0.37;\n  const degreeRange3 = 3.2 - 1.8;\n  let degree, relative;\n  degree = 1.8 + masterNormalized * (degreeRange1 / 0.3);\n  relative = 0;\n\n  relative += (masterNormalized > 0.3 && masterNormalized <= 0.6) * (masterNormalized - 0.3) * (relationRange2 / 0.3);\n  degree -= (masterNormalized > 0.6) * (masterNormalized - 0.6) * (degreeRange3 / 0.4);\n  relative += (masterNormalized > 0.6) * 0.8;\n\n  // Default values in case masterNormalized doesn't match any conditions\n  degree = degree || 1.8;\n  relative = relative || 0.5;\n  return {degree: degree, relative: relative};\n}\n\n// Input sliders for various parameters\nlet attract = input(0.5, 0, 1);\nlet speed = input(0.3, 0.1, 1.3);\nlet masterNormalized = input(0, 0, 1);\n\n// Map masterNormalized to relative and degree values\nlet relative = mapSliderToMinMax(masterNormalized, 0.37, 0.8);\nlet degree = mapSliderToMinMax(masterNormalized, 3.2, 1.8);\n\n// Additional input sliders\nlet nscale = input(1.2, 0, 10);\nlet nAmplitude = input(2, 0, 2);\nlet hueOffset = 0.3;\nlet rings = input(1, 0, 100);\nlet mixAmt = input(1);\n\n// Get the current position in 3D space\nlet s = getSpace();\n\n// Calculate sample position for noise\nlet samplePos = vec3(0, 0, -degree) * 0.2 + (degree * 0.1);\n\n// Generate noise values\nlet n = noise(samplePos);\nlet n1 = nsin((noise(samplePos)) * rings);\nlet n2 = nsin((noise(samplePos + hueOffset)) * rings);\nlet n3 = nsin((noise(samplePos + hueOffset * 2.2)) * rings);\n\n// Calculate color based on noise values\nlet col = pow(vec3(n1, n2, n3), vec3(7));\n\n// Define a shape for the horizon\nlet horizon = shape(() => {\n    rotateX(PI / 2);\n    torus(1.5, 1.39);\n    expand(n * nAmplitude);\n    setGeometryQuality(80);\n    sphere(0.1);\n    blend(5);\n});\n\n// Define a shape for the fractal ball\nlet fractalBall = shape(() => {\n    let s = getSpace();\n    let position = vec3(mouse.x, mouse.y, s.z);\n    let amplitude = 0.9;\n    let k = fractalNoise(s + speed * time) * 0.1;\n    sphere(0.5);\n    expand(k);\n});\n\n// Set the color based on the calculated color value\ncolor(col);\n\n// Render the horizon shape\nhorizon();\n\n// Mix the geometry based on the relative value\nmixGeo(relative);\n\n// Render the fractal ball shape\nfractalBall();",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "colorful-warp-space-candy",
+        "title": "Colorful Warp Space Candy",
+        "description": "Creates an abstract, colorful warp effect in space with dynamic noise-based distortions.",
+        "tags": ["colorful", "warp", "space", "abstract", "noise", "distortion"],
+        "code": "// Add your shader code here for 'Colorful Warp Space Candy'\n// (Code snippet was not fully provided, so it's marked as a placeholder.)",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "space-boxes",
+        "title": "Space Boxes",
+        "description": "Generates multiple boxes arranged in a circular pattern with noise-based color variations, creating a space-like grid.",
+        "tags": ["space", "boxes", "grid", "noise", "colorful"],
+        "code": "let scale = 0.3;\nlet count = 7;\n\nlet n = noise(s + vec3(110, 10, -1 * time * 0.9));\nn = sin(12.0 * abs(n)) * 0.5 + 0.5;\n\nlet col = pow(sin(normal.y * n * 10), 4) * 0.2;\nunion(0.2);\n\nfor(let i = 0; i < count; i++) {\n  let inc = (i / count) * PI * 2;\n  displace(sin(inc) * scale, cos(inc) * scale, 0);\n  let rot = (i / count) * PI * (count - 298);\n  rotateY(0.2);\n  rotateZ(rot);\n  rotateX(rot + time);\n  box(0.2, 0.1, 1);\n  reset();\n}\nreset();\nrotateX(PI / 2);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "tye-dye-2x4",
+        "title": "Tye Dye 2 x 4",
+        "description": "Creates a vibrant tye dye effect with warped space, using noise and multiple rotations for dynamic color blending.",
+        "tags": ["tye dye", "colorful", "warp", "space", "noise", "blend"],
+        "code": "let strength = input(0.6);\n\nlet warpSpace = (p) => {\n  p = 8.0 * (vec3(0.5, 0.2, 0.1) + p);\n  // p = getRayDirection().x * 8.0 * (vec3(0.5, 0.2, 0.1) + p);\n  let t = time / 4.0;\n  for(let i = 1.0; i < 3.0; i += 1.0) { \n      p.x = p.x + strength * sin(2.0 * t + i * 1.5 * p.y) + t;\n      p.y = p.y + strength * cos(2.0 * t + i * 1.5 * p.x);\n      p.z = p.z + strength * cos(2.0 * t + i * 1.5 * p.y);\n  }\n  return 0.5 + 0.5 * cos(time + vec3(p.x, p.y, p.z) + vec3(0.0, 0.0, 0.0));\n}\n\nsetStepSize(0.2);\nlet s = getSpace();\nlet warpedSpace = warpSpace(s);\n\nmetal(2);\nshine(1);\nocclusion(0.5);\ncolor(1 - warpedSpace);\n\nreset();",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "fbm-2d-3d-viz",
+        "title": "FBM 2D + 3D Visualization",
+        "description": "Uses Fractal Brownian Motion (FBM) to create intricate 2D and 3D visual patterns with dynamic color blending.",
+        "tags": ["FBM", "2D", "3D", "visualization", "fractal", "noise"],
+        "code": "function fbm(p) {\n  return vec3(\n    fractalNoise(p),\n    fractalNoise(p + 20000),\n    0\n  );\n}\n\nlet t = time * 0.0001;\nlet s = enable2D();\ns = 0.7 * vec3(s.x, s.y, 0) + 5 * (t / 200);\nlet n = fbm(fbm(fbm(fbm(s) / 2 * sin(time / 4))) * 0.9 + 2);\ncolor(n);\n\nconsole.log(fbm);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "complexity-scale-box",
+        "title": "Complexity Scale Box",
+        "description": "Creates a box with noise-based size variations and color gradients, adding complexity and dynamic visual effects.",
+        "tags": ["box", "complexity", "scale", "noise", "color", "gradient"],
+        "code": "const complexity = input(0.1, 0.01, 0.2);\nconst scale = input(1.0, 0.0, 10.0);\n\nconst s = getSpace();\nconst n = noise(s + noise(s * scale + vec3(time, time / 2, time / 4)));\n\ncolor(vec3(n) + normal);\nshine(0.8);\nbox(1.0 - complexity + complexity * n);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "fbm-depth-effect",
+        "title": "FBM Depth Effect",
+        "description": "Uses multiple layers of fractal noise to create a deep, intricate color effect in 3D space.",
+        "tags": ["FBM", "depth", "color", "3D", "noise", "fractal"],
+        "code": "function fbm(p) {\n  return vec3(\n    fractalNoise(p),\n    fractalNoise(p + 20000),\n    0\n  );\n}\n\nlet t = time * 0.0001;\nlet s = enable2D();\ns = 0.7 * vec3(s.x, s.y, 0) + 5 * (t / 200);\nlet n = fbm(fbm(fbm(fbm(s) / 2 * sin(time / 4))) * 0.9 + 2);\ncolor(n);\n\nconsole.log(fbm);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      },
+      {
+        "id": "fully-inside-colors-goin-cray",
+        "title": "Fully Inside Colors Goin Cray",
+        "description": "Creates an animated box with colorful internal distortions and metallic properties, giving a crazy inside view.",
+        "tags": ["colors", "animation", "box", "metallic", "crazy"],
+        "code": "let s = getRayDirection();\nlet r = getSpace();\n\n// Set the step size for raymarching\nsetStepSize(0.1);\n\n// Set the maximum number of iterations for raymarching\nsetMaxIterations(50);\n\n// Set the color based on the negative ray direction, scaled by 0.2\ncolor(-s * 0.2);\n\n// Set the metallic property of the material\nmetal(0.9);\n\n// Rotate the scene around the X-axis based on the Y-coordinate of the space and time\nrotateX(r.y * 5 + time / 2);\n\n// Displace the position to ensure the camera starts inside the box and slightly further inside\ndisplace(0.1, 0.4, -0.9);\n\n// Further displace the position based on sine and cosine functions of the ray direction and time\ndisplace(sin(s.y * 20 + time) * 0.1, sin(s.x * 10 + time) * 0.2, cos(s.x * 20) * 0.2);\n\n// Draw a box with dimensions 1 x 0.5 x 0.5\nbox(1, 0.5, 0.5);\n\n// Expand the geometry slightly\nexpand(0.3);",
+        "thumbnail": null,
+        "createdAt": "2024-03-20T12:00:00Z",
+        "updatedAt": "2024-03-20T12:00:00Z"
+      }
+      // Additional presets can be added here following the same structure.
+    ],
+    "schema": {
+      "id": "string (unique identifier)",
+      "title": "string (display name)",
+      "description": "string (detailed description)",
+      "tags": "array of strings (for searching/filtering)",
+      "code": "string (the shader code)",
+      "thumbnail": "string? (optional base64 image)",
+      "createdAt": "ISO date string",
+      "updatedAt": "ISO date string"
+    }
+  }
+  

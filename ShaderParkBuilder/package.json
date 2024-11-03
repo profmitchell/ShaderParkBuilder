@@ -1,0 +1,71 @@
+{
+  "name": "shader-park-live-coding",
+  "version": "1.0.0",
+  "description": "Starter template with Shader Park for live coding",
+  "main": "electron/main.js",
+  "repository": "https://github.com/shader-park/shader-park-live-coding",
+  "author": "Torin Blankensmith & Peter Whidden",
+  "license": "MIT",
+  "private": false,
+  "sideEffects": true,
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build --no-source-maps index.html --no-minify --public-url ./",
+    "electron:start": "electron .",
+    "electron:dev": "concurrently \"yarn start\" \"wait-on http://localhost:1234 && electron .\"",
+    "electron:build": "yarn build && electron-builder"
+  },
+  "staticFiles": {
+    "staticPath": "fonts",
+    "watcherGlob": "**"
+  },
+  "dependencies": {
+    "@codemirror/basic-setup": "^0.20.0",
+    "@codemirror/commands": "^0.20.0",
+    "@codemirror/lang-javascript": "^0.20.1",
+    "@codemirror/next": "^0.16.0",
+    "parcel-plugin-inline-source": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-resizable-panels": "^2.1.6",
+    "shader-park-core": "^0.2.6",
+    "three": "^0.155.0",
+    "tweakpane": "^3.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "concurrently": "^9.0.1",
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.shaderpark.builder",
+    "productName": "Shader Park Builder",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "dist",
+        "to": "app/dist"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
