@@ -2,6 +2,10 @@
 
 A visual builder for creating and composing [Shader Park](https://shaderpark.com/) shaders. Build complex shaders using a library of predefined elements and custom snippets.
 
+<img width="2056" alt="Screenshot 2024-11-02 at 11 55 46 PM" src="https://github.com/user-attachments/assets/bea1c121-7ca5-4e22-b5b6-6fa94a7be5a6">
+
+<img width="2056" alt="Screenshot 2024-11-02 at 11 56 36 PM" src="https://github.com/user-attachments/assets/174b1aec-7a37-468b-9464-d46f4c9e14fc">
+
 ## About Shader Park
 
 This project is built on top of [Shader Park](https://shaderpark.com/), an incredible platform that makes creating shaders accessible through a JavaScript API. Shader Park was created by [Torin Blankensmith](https://github.com/torinmb) and [Peter Whidden](https://github.com/pwhiddy).
